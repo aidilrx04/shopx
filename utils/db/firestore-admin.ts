@@ -19,7 +19,7 @@ const serviceAccount = {
 
 let app
 
-if (typeof window === 'undefined' && getApps.length === 0) {
+if (typeof window === 'undefined' && getApps().length === 0) {
     app = admin.initializeApp({
         credential: cert({
             "type": "service_account",
@@ -35,10 +35,10 @@ if (typeof window === 'undefined' && getApps.length === 0) {
         } as ServiceAccount),
         databaseURL: "https://shopx-6969.firebaseio.com",
 
-    }, 'shopx')
+    })
 }
 else {
-    app = admin.app('shopx')
+    app = admin.app('[DEFAULT]')
 }
 
 const db = getFirestore(app)
